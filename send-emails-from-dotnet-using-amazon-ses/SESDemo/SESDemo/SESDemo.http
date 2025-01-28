@@ -1,0 +1,6 @@
+@SESDemo_HostAddress = http://localhost:5102
+
+GET {{SESDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
