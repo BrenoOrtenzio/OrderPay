@@ -25,7 +25,7 @@ namespace OrderManager.Api.Services
         {
             var config = new ConsumerConfig
             {
-                BootstrapServers = "localhost:9092",
+                BootstrapServers = "3.223.192.14:9092",
                 GroupId = "order-api-consumer-group",
                 AutoOffsetReset = AutoOffsetReset.Earliest
             };
