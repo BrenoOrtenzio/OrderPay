@@ -1,10 +1,10 @@
-version: "3.8"
 name: order-manager
 
 services:
   api:
     container_name: order-manager
-    image: order-manager:latest
+    build: .
+    # image: order-manager:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:8080
