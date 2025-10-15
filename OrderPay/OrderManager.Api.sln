@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.Api", "BookManager.Api\OrderManager.Api.csproj", "{59F0A5C3-D417-4C5F-8C76-114795B72E41}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{EAA52695-0158-4118-9984-0196470C7150}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentManager.Api", "PaymentManager.Api\PaymentManager.Api.csproj", "{7367A2B2-A1FE-474B-B410-8F0B958FE91D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.Api", "OrderManager.Api\OrderManager.Api.csproj", "{A425023A-A80F-3D3D-6053-06FE4DAB4741}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{59F0A5C3-D417-4C5F-8C76-114795B72E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59F0A5C3-D417-4C5F-8C76-114795B72E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59F0A5C3-D417-4C5F-8C76-114795B72E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59F0A5C3-D417-4C5F-8C76-114795B72E41}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EAA52695-0158-4118-9984-0196470C7150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EAA52695-0158-4118-9984-0196470C7150}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAA52695-0158-4118-9984-0196470C7150}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{7367A2B2-A1FE-474B-B410-8F0B958FE91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7367A2B2-A1FE-474B-B410-8F0B958FE91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7367A2B2-A1FE-474B-B410-8F0B958FE91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A425023A-A80F-3D3D-6053-06FE4DAB4741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A425023A-A80F-3D3D-6053-06FE4DAB4741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A425023A-A80F-3D3D-6053-06FE4DAB4741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A425023A-A80F-3D3D-6053-06FE4DAB4741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
