@@ -1,18 +1,22 @@
-version: "3.8"
 name: payment-manager
 
 services:
   api:
     container_name: payment-manager
-    image: payment-manager:latest
+    image: mcr.microsoft.com/dotnet/aspnet:8.0
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:8080
     ports:
       - 8080:8080
+    volumes:
+      - ./bin/Release/net8.0/linux-x64/publish:/app
+    working_dir: /app
+    command: ["dotnet", "PaymentManager.Api.dll"]
     depends_on:
       postgres:
         condition: service_healthy
+
   postgres:
     container_name: postgres
     image: postgres:17-alpine
@@ -28,5 +32,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
 volumes:
   postgres-data:
