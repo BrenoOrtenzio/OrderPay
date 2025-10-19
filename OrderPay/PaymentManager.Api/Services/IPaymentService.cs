@@ -6,8 +6,9 @@ namespace PaymentManager.Api.Services
 {
     public interface IPaymentService
     {
-        Task<Payment?> GetOrderAsync(Guid id);
-        Task<Guid> ProcessPaymentAsync(ProcessPaymentRequest request);
+        Task<List<Payment>> GetPaymentsAsync();
+        Task<Payment?> GetPaymentAsync(Guid id);
+        Task<Payment> ProcessPaymentAsync(ProcessPaymentRequest request);
         Task<Guid> CreatePayment(OrderMessage message);
     }
 }

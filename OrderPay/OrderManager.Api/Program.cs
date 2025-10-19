@@ -9,7 +9,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddHostedService<ConsumerUpdateOrderMessageService>();
 builder.Services.AddScoped<IOrderMessageRepository, OrderMessageRepository>();
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var assemblyName = typeof(Program).Assembly.GetName().Name;
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -18,6 +26,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 var app = builder.Build();
 
+app.UseCors();
 app.UseSwagger();
 app.UseSwaggerUI();
 

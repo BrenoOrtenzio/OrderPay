@@ -1,5 +1,5 @@
-﻿using Confluent.Kafka;
-using Core;
+﻿using Core;
+using Microsoft.EntityFrameworkCore;
 using PaymentManager.Api.Domain;
 using PaymentManager.Api.DTOs;
 
@@ -7,10 +7,10 @@ namespace PaymentManager.Api.Services
 {
     public class PaymentService(AppDbContext dbContext, IUpdateOrderMessageRepository updateOrderMessageRepository) : IPaymentService
     {
-        public async Task<Payment?> GetOrderAsync(Guid id)
+        public async Task<List<Payment>> GetPaymentsAsync()
         {
-            var payment = await dbContext.Payments.FindAsync(id);
-            return payment ?? null;
+            var payments = await dbContext.Payments.ToListAsync();
+            return payments;
         }
 
         public async Task<Guid> CreatePayment(OrderMessage message)
@@ -32,11 +32,11 @@ namespace PaymentManager.Api.Services
             return payment.Id;
         }
 
-        public async Task<Guid> ProcessPaymentAsync(ProcessPaymentRequest request)
+        public async Task<Payment> ProcessPaymentAsync(ProcessPaymentRequest request)
         {
             var payment = await dbContext.Payments.FindAsync(request.Id);
             if (payment is null)
-                return Guid.Empty;
+                return null;
 
             payment.Status = "Paid";
             payment.PaidAt = DateTime.UtcNow;
@@ -45,7 +45,13 @@ namespace PaymentManager.Api.Services
 
             await updateOrderMessageRepository.UpdatePaidPaymentOrderMessage(payment.OrderId);
 
-            return payment.Id;
+            return payment;
+        }
+
+        public async Task<Payment?> GetPaymentAsync(Guid id)
+        {
+            var payment = await dbContext.Payments.FindAsync(id);
+            return payment ?? null;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace PaymentManager.Api.Services
         {
             var config = new ConsumerConfig
             {
-                BootstrapServers = "localhost:9092",
+                BootstrapServers = "3.92.6.208:9092",
                 GroupId = "payment-api-consumer-group",
                 AutoOffsetReset = AutoOffsetReset.Earliest
             };
