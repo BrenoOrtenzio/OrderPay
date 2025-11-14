@@ -8,6 +8,7 @@ namespace PaymentManager.Api.Services
     {
         Task<List<Payment>> GetPaymentsAsync();
         Task<Payment?> GetPaymentAsync(Guid id);
+        Task<Payment?> GetPaymentByOrderIdAsync(Guid id);
         Task<Payment> ProcessPaymentAsync(ProcessPaymentRequest request);
         Task<Guid> CreatePayment(OrderMessage message);
     }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using OrderManager.Api;
 using OrderManager.Api.DTOs;
 using OrderManager.Api.Services;
@@ -8,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddHostedService<ConsumerUpdateOrderMessageService>();
+builder.Services.AddTransient<ISendOrderMessageExceptionsService, SendOrderMessageExceptionsService>();
 builder.Services.AddScoped<IOrderMessageRepository, OrderMessageRepository>();
 builder.Services.AddCors(options =>
 {
@@ -63,7 +65,13 @@ app.MapPost("/orders", async (IOrderService orderService, IOrderMessageRepositor
         CreatedAt = DateTime.UtcNow
     });
 
-    return Results.Created($"/orders/{orderId}", request);
+    return Results.Created($"/orders/{orderId}", new { id = orderId });
+});
+
+app.MapGet("/refreshOrders", async (ISendOrderMessageExceptionsService sendOrderMessageExceptionsService) =>
+{
+    await sendOrderMessageExceptionsService.ReprocessOrders();
+    return Results.Ok();
 });
 
 using var scope = app.Services.CreateScope();

@@ -53,5 +53,11 @@ namespace PaymentManager.Api.Services
             var payment = await dbContext.Payments.FindAsync(id);
             return payment ?? null;
         }
+
+        public async Task<Payment?> GetPaymentByOrderIdAsync(Guid id)
+        {
+            var payment = dbContext.Payments.Where(x => x.OrderId == id).FirstOrDefault();
+            return payment ?? null;
+        }
     }
 }

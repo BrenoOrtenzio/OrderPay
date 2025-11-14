@@ -21,7 +21,8 @@ namespace OrderManager.Api.Services
             {
                 var config = new Confluent.Kafka.ProducerConfig
                 {
-                    BootstrapServers = "98.92.168.150:9092",
+                    //BootstrapServers = "localhost:9092",
+                    BootstrapServers = "13.220.244.68:9092",
                     MessageTimeoutMs = 3000,             // tempo máximo para entrega
                     SocketTimeoutMs = 3000,              // timeout de conexão
                     Acks = Acks.Leader                   // confirmação mínima

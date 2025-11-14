@@ -38,9 +38,9 @@ app.MapGet("/payments", async (IPaymentService paymentService) =>
     return Results.Ok(payments);
 });
 
-app.MapGet("/orders/{id:guid}", async (IPaymentService paymentService, Guid id) =>
+app.MapGet("/payments/by-order/{id:guid}", async (IPaymentService paymentService, Guid id) =>
 {
-    var payment = await paymentService.GetPaymentAsync(id);
+    var payment = await paymentService.GetPaymentByOrderIdAsync(id);
     if (payment == null)
     {
         return Results.NotFound();
